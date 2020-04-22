@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Lights";
 }
 
 
@@ -9,13 +9,20 @@
     <div class="light-bulb-grid">
         @for (var i = 0; i < Model.HEX.Length; i++)
         {
-            <div class="light-bulb" style="background-color: @Model.HEX[i];"></div>
+            <div class="light-bulb" id="bulb-@i" style="background-color: @Model.HEX[i];"></div>
         }
     </div>
 
 @* Create button*@
-<button id="button" onclick="addBlinks('light-bulb', 'button')">START</button>
-
+<div class="control-panel">
+    <button id="button">START</button>
+    <div class="control-grid">
+        <form>
+            <legend>LIGHTBULB - ONE</legend>
+            <input type="range" min="10" max="250" value="50" onchange="changeSize(this.value, 'bulb-0')" />
+        </form>
+    </div>
+</div>
 @*
     User Stories
 
