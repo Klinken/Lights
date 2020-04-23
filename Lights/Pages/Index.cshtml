@@ -7,9 +7,9 @@
 
 @* Create loop of lights with random colors *@
     <div class="light-bulb-grid">
-        @for (var i = 0; i < Model.HEX.Length; i++)
+        @for (var i = 0; i < Model.LIGHTBULBS.GetLength(0); i++)
         {
-            <div class="light-bulb" id="bulb-@i" style="background-color: @Model.HEX[i];"></div>
+            <div class="light-bulb" id="bulb-@i" style="background-color: @Model.LIGHTBULBS[i,0];"></div>
         }
     </div>
 
@@ -17,10 +17,16 @@
 <div class="control-panel">
     <button id="button">START</button>
     <div class="control-grid">
+        @for (var i = 0; i < Model.LIGHTBULBS.GetLength(0); i++)
+        {
+        <h2>@Model.LIGHTBULBS[i, 1]</h2>
         <form>
-            <legend>LIGHTBULB - ONE</legend>
-            <input type="range" min="10" max="250" value="50" onchange="changeSize(this.value, 'bulb-0')" />
+            <label>Size</label>
+            <input type="range" min="10" max="250" value="50" onchange="changeSize(this.value, 'bulb-@i')" />
+            <label>Color</label>
+            <input type="color" onchange="changeColor(this.value, 'bulb-@i')" />
         </form>
+        }
     </div>
 </div>
 @*
@@ -33,7 +39,7 @@
 
         User can select the color used to fill each circle
         User can specify the intensity value
-        User can change the size of any circle in the row
+        User can change the size of any circle in the row [X]
         User can specify the number of rows to be included in the display. From one to seven rows can be chosen
 
 *@

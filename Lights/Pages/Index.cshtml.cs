@@ -19,15 +19,15 @@ namespace Lights.Pages
             _logger = logger;
         }
 
-        public readonly string[] HEX =
-        { 
-            "#ff0000", 
-            "#ffa500", 
-            "#ffff00", 
-            "#008000",
-            "#0000ff",
-            "#4b0082",
-            "#ee82ee"
+        public readonly string[,] LIGHTBULBS =
+        {
+            {"#ff0000", "LIGHTBULB - ONE" },
+            {"#ffa500", "LIGHTBULB - TWO" },
+            {"#ffff00", "LIGHTBULB - THREE" },
+            {"#008000", "LIGHTBULB - FOUR" },
+            {"#0000ff", "LIGHTBULB - FIVE" },
+            {"#4b0082", "LIGHTBULB - SIX" },
+            {"#ee82ee", "LIGHTBULB - SEVEN" }
         };
 
         public void OnGet()

@@ -30,7 +30,13 @@ function changeSize(sizeValue, targetId) {
     var bulbToChange = document.getElementById(targetId);
     bulbToChange.style.width = sizeValue + "px";
     bulbToChange.style.height = sizeValue + "px";
-    console.log(sizeValue);
+}
+
+// LIGHTS COLOR FUNCTION
+
+function changeColor(colorValue, targetId) {
+    var bulbToChange = document.getElementById(targetId);
+    bulbToChange.style.backgroundColor = colorValue;
 }
 
 
