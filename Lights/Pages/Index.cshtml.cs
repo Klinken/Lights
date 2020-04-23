@@ -12,23 +12,26 @@ namespace Lights.Pages
 {
     public class IndexModel : PageModel
     {
+
+        public int rows = 2;
+
+        public string[,] Lightbulbs =
+        {
+            {"#ff0000", "ONE" },
+            {"#ffa500", "TWO" },
+            {"#ffff00", "THREE" },
+            {"#008000", "FOUR" },
+            {"#0000ff", "FIVE" },
+            {"#4b0082", "SIX" },
+            {"#ee82ee", "SEVEN" }
+        };
+
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
-
-        public readonly string[,] LIGHTBULBS =
-        {
-            {"#ff0000", "LIGHTBULB - ONE" },
-            {"#ffa500", "LIGHTBULB - TWO" },
-            {"#ffff00", "LIGHTBULB - THREE" },
-            {"#008000", "LIGHTBULB - FOUR" },
-            {"#0000ff", "LIGHTBULB - FIVE" },
-            {"#4b0082", "LIGHTBULB - SIX" },
-            {"#ee82ee", "LIGHTBULB - SEVEN" }
-        };
 
         public void OnGet()
         {

@@ -1,15 +1,18 @@
 ﻿
 body {
     background-color: black;
-    padding: 100px;
-    color: white;
+    padding:0;
+    margin:0;
 }
 
-.control-panel {
+#control-panel {
+    display: none;
+    position: absolute;
+    background-color: #FFF;
     max-width: 500px;
-    margin: 0 auto;
-    padding: 50px;
     text-align:center;
+    padding: 10px;
+    z-index: 100;
 }
 
 #button {
@@ -27,9 +30,8 @@ body {
 .light-bulb-grid {
    display: grid;
    grid-template-columns: repeat(7, 1fr);
-   max-width: 1000px;
-   margin: 0 auto;
    justify-items: center;
+   height: 250px;
 }
 
 .light-bulb {

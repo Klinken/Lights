@@ -3,6 +3,13 @@
 
 // Write your Javascript code.
 
+//CONTROLPANEL HIDE/SHOW FUNCTION
+
+function hideShowMenu(targetId) {
+    var menu = document.getElementById(targetId);
+    menu.style.display = "block";
+}
+
 
 // THE LIGHT START/STOP FUNCTION
 function addBlinks(classToTarget, buttonID) {
@@ -43,4 +50,6 @@ function changeColor(colorValue, targetId) {
 //EVENTLISTENERS
 
 document.getElementById("button").addEventListener("click", function () { addBlinks("light-bulb", "button") });
+document.getElementById("control-panel-show").addEventListener("click", function () { hideShowMenu("control-panel") });
+
 

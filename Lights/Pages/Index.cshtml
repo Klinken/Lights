@@ -1,45 +1,54 @@
 ﻿@page
 @model IndexModel
+
 @{
     ViewData["Title"] = "Lights";
 }
 
 
-@* Create loop of lights with random colors *@
-    <div class="light-bulb-grid">
-        @for (var i = 0; i < Model.LIGHTBULBS.GetLength(0); i++)
-        {
-            <div class="light-bulb" id="bulb-@i" style="background-color: @Model.LIGHTBULBS[i,0];"></div>
-        }
+    <div id="control-panel">
+        <button id="button">START</button>
+        <div class="control-grid">
+            @for (var i = 0; i < Model.Lightbulbs.GetLength(0); i++)
+            {
+                <h2>Lightbulb: @Model.Lightbulbs[i, 1]</h2>
+                <form>
+                    <label>Size</label>
+                    <input type="range" min="10" max="250" value="50" onchange="changeSize(this.value, 'bulb-@i')" />
+                    <label>Color</label>
+                    <input type="color" value="@Model.Lightbulbs[i,0]" onchange="changeColor(this.value, 'bulb-@i')" />
+                </form>
+            }
+        </div>
     </div>
 
-@* Create button*@
-<div class="control-panel">
-    <button id="button">START</button>
-    <div class="control-grid">
-        @for (var i = 0; i < Model.LIGHTBULBS.GetLength(0); i++)
+
+@* Create loop of lights with colors *@
+    <button id="control-panel-show">Open</button>
+
+@for (var e = 0; e < Model.rows; e++)
+{
+
+    <div class="light-bulb-grid">
+        @for (var i = 0; i < Model.Lightbulbs.GetLength(0); i++)
         {
-        <h2>@Model.LIGHTBULBS[i, 1]</h2>
-        <form>
-            <label>Size</label>
-            <input type="range" min="10" max="250" value="50" onchange="changeSize(this.value, 'bulb-@i')" />
-            <label>Color</label>
-            <input type="color" onchange="changeColor(this.value, 'bulb-@i')" />
-        </form>
+            <div class="light-bulb" id="bulb-@i" style="background-color: @Model.Lightbulbs[i, 0];"></div>
         }
     </div>
-</div>
+}
+
+
 @*
     User Stories
 
-        User can press a button to start and stop the display
+        User can press a button to start and stop the display [X]
         User can change the interval of time controlling the change in intensity
 
     Bonus features
 
-        User can select the color used to fill each circle
+        User can select the color used to fill each circle [X]
         User can specify the intensity value
         User can change the size of any circle in the row [X]
-        User can specify the number of rows to be included in the display. From one to seven rows can be chosen
+        User can specify the number of rows to be included in the display. From one to seven rows can be chosen []
 
 *@
