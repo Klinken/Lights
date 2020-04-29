@@ -7,14 +7,23 @@
 
 
     <div id="control-panel">
-        <button id="button">START</button>
-        <div class="control-grid">
+        <div id="control-panel-menu">
+            <button id="button">START</button>
+            <img src="~/img/close.svg" width="25" height="25" onclick="hideShowMenu('control-panel')" />
+        </div>
+
+            <form method="post">
+                <input type="number" name="Rows" min="1" max="7" value="@Model.Rows"/>
+                <input type="submit" value="Set Rows" />
+            </form>
+        
+        <div class="controls-grid">
             @for (var i = 0; i < Model.Lightbulbs.GetLength(0); i++)
             {
-                <h2>Lightbulb: @Model.Lightbulbs[i, 1]</h2>
+                <h4>Lightbulb: @Model.Lightbulbs[i, 1]</h4>
                 <form>
                     <label>Size</label>
-                    <input type="range" min="10" max="250" value="50" onchange="changeSize(this.value, 'bulb-@i')" />
+                    <input type="range" min="10" max="100" value="50" onchange="changeSize(this.value, 'bulb-@i')" />
                     <label>Color</label>
                     <input type="color" value="@Model.Lightbulbs[i,0]" onchange="changeColor(this.value, 'bulb-@i')" />
                 </form>
@@ -24,31 +33,15 @@
 
 
 @* Create loop of lights with colors *@
-    <button id="control-panel-show">Open</button>
+    <img src="~/img/settings.svg" alt="Settings" id="control-panel-show" width="25" height="25" />
 
-@for (var e = 0; e < Model.rows; e++)
+@for (var e = 0; e < Model.Rows; e++)
 {
 
     <div class="light-bulb-grid">
         @for (var i = 0; i < Model.Lightbulbs.GetLength(0); i++)
         {
-            <div class="light-bulb" id="bulb-@i" style="background-color: @Model.Lightbulbs[i, 0];"></div>
+            <div class="light-bulb bulb-@i" style="background-color: @Model.Lightbulbs[i, 0];"></div>
         }
     </div>
 }
-
-
-@*
-    User Stories
-
-        User can press a button to start and stop the display [X]
-        User can change the interval of time controlling the change in intensity
-
-    Bonus features
-
-        User can select the color used to fill each circle [X]
-        User can specify the intensity value
-        User can change the size of any circle in the row [X]
-        User can specify the number of rows to be included in the display. From one to seven rows can be chosen []
-
-*@

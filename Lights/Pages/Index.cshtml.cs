@@ -12,8 +12,8 @@ namespace Lights.Pages
 {
     public class IndexModel : PageModel
     {
-
-        public int rows = 2;
+        [BindProperty]
+        public int Rows { get; set; }
 
         public string[,] Lightbulbs =
         {
@@ -26,6 +26,7 @@ namespace Lights.Pages
             {"#ee82ee", "SEVEN" }
         };
 
+        
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -35,7 +36,10 @@ namespace Lights.Pages
 
         public void OnGet()
         {
-            
+            Rows = 1;
+
+
         }
+
     }
 }

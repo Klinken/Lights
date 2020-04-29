@@ -7,7 +7,11 @@
 
 function hideShowMenu(targetId) {
     var menu = document.getElementById(targetId);
-    menu.style.display = "block";
+    if (menu.style.display == "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
 }
 
 
@@ -19,13 +23,13 @@ function addBlinks(classToTarget, buttonID) {
     if (button.innerHTML != "STOP") {
         button.innerHTML = "STOP";
         for (var i = 0; i < targetClass.length; i++) {
-            targetClass[i].classList += " animated";
+            targetClass[i].id += "animated";
 
         }
     } else {
         button.innerHTML = "START";
         for (var i = 0; i < targetClass.length; i++) {
-            targetClass[i].classList = "light-bulb";
+            targetClass[i].id = "";
         }
     }
 
@@ -33,17 +37,25 @@ function addBlinks(classToTarget, buttonID) {
 
 // LIGHTS SIZE FUNCTION
 
-function changeSize(sizeValue, targetId) {
-    var bulbToChange = document.getElementById(targetId);
-    bulbToChange.style.width = sizeValue + "px";
-    bulbToChange.style.height = sizeValue + "px";
+function changeSize(sizeValue, targetClass) {
+    var bulbsToChange = document.getElementsByClassName(targetClass);
+    for (var i = 0; i < bulbsToChange.length; i++) {
+        bulbsToChange[i].style.height = sizeValue + "px";
+        bulbsToChange[i].style.width = sizeValue + "px";
+
+    }
 }
 
 // LIGHTS COLOR FUNCTION
 
-function changeColor(colorValue, targetId) {
-    var bulbToChange = document.getElementById(targetId);
-    bulbToChange.style.backgroundColor = colorValue;
+
+function changeColor(colorValue, targetClass) {
+    var bulbToChange = document.getElementsByClassName(targetClass);
+
+    for (var i = 0; i < bulbToChange.length; i++) {
+        bulbToChange[i].style.backgroundColor = colorValue;
+    }
+
 }
 
 
